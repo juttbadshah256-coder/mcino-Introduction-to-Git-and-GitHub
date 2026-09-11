@@ -1,0 +1,210 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simple Interest Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+
+        nav {
+            background-color: #222;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .calculator {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f4f7f9;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: #222;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: #222;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <!-- Home Page -->
+    <div class="container">
+
+        <h1>Simple Interest Calculator</h1>
+
+        <!-- Website Introduction -->
+        <h2>Welcome to Our Website</h2>
+
+        <p>
+            Welcome to the Simple Interest Calculator website.
+            This website provides a simple and easy way to calculate
+            simple interest. Users can enter the principal amount,
+            rate of interest, and time period to quickly calculate
+            the simple interest.
+        </p>
+
+        <p>
+            Our goal is to make simple interest calculations
+            easy, fast, and understandable for everyone.
+        </p>
+
+        <!-- Calculator -->
+        <div class="calculator">
+
+            <h2>Simple Interest Calculator</h2>
+
+            <label for="principal">Principal Amount</label>
+            <input
+                type="number"
+                id="principal"
+                placeholder="Enter principal amount"
+            >
+
+            <label for="rate">Rate of Interest (%)</label>
+            <input
+                type="number"
+                id="rate"
+                placeholder="Enter interest rate"
+            >
+
+            <label for="time">Time Period (Years)</label>
+            <input
+                type="number"
+                id="time"
+                placeholder="Enter time period"
+            >
+
+            <button onclick="calculateInterest()">
+                Calculate Interest
+            </button>
+
+            <p id="result"></p>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Simple Interest Calculator. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function calculateInterest() {
+
+            let principal =
+                Number(document.getElementById("principal").value);
+
+            let rate =
+                Number(document.getElementById("rate").value);
+
+            let time =
+                Number(document.getElementById("time").value);
+
+            if (principal <= 0 || rate <= 0 || time <= 0) {
+                document.getElementById("result").innerText =
+                    "Please enter valid values.";
+                return;
+            }
+
+            let interest = (principal * rate * time) / 100;
+
+            document.getElementById("result").innerText =
+                "Simple Interest: " + interest;
+        }
+    </script>
+
+</body>
+</html>
+```
