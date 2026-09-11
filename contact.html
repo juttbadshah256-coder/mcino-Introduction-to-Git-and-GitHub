@@ -47,6 +47,10 @@
             margin-bottom: 20px;
         }
 
+        h2 {
+            margin-top: 25px;
+        }
+
         p {
             font-size: 17px;
             line-height: 1.6;
@@ -118,9 +122,32 @@
             free to contact us.
         </p>
 
-        <form>
+        <!-- Contact Information -->
+        <h2>Contact Information</h2>
+
+        <p>
+            Email:
+            <a href="mailto:support@simpleinterestcalculator.com">
+                support@simpleinterestcalculator.com
+            </a>
+        </p>
+
+        <p>
+            We are happy to receive your questions, suggestions,
+            and feedback about our website.
+        </p>
+
+        <!-- Contact Form -->
+        <h2>Send Us a Message</h2>
+
+        <form
+            action="mailto:support@simpleinterestcalculator.com"
+            method="post"
+            enctype="text/plain"
+        >
 
             <label for="name">Name</label>
+
             <input
                 type="text"
                 id="name"
@@ -130,6 +157,7 @@
             >
 
             <label for="email">Email</label>
+
             <input
                 type="email"
                 id="email"
@@ -139,6 +167,7 @@
             >
 
             <label for="message">Message</label>
+
             <textarea
                 id="message"
                 name="message"
@@ -146,7 +175,9 @@
                 required
             ></textarea>
 
-            <button type="submit">Send Message</button>
+            <button type="submit">
+                Send Message
+            </button>
 
         </form>
 
@@ -154,7 +185,10 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Simple Interest Calculator. All Rights Reserved.</p>
+        <p>
+            © 2026 Simple Interest Calculator.
+            All Rights Reserved.
+        </p>
     </footer>
 
 </body>
