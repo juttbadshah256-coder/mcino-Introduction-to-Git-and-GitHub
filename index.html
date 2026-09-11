@@ -9,6 +9,10 @@
     <title>Travel Recommendation</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -18,7 +22,7 @@
         /* Navigation Bar */
         nav {
             background-color: #222;
-            padding: 15px;
+            padding: 15px 25px;
             display: flex;
             align-items: center;
             gap: 20px;
@@ -34,6 +38,7 @@
             text-decoration: underline;
         }
 
+        /* Search Box */
         .search-box {
             margin-left: auto;
             display: flex;
@@ -41,17 +46,19 @@
         }
 
         .search-box input {
-            padding: 9px;
+            padding: 10px;
             width: 220px;
-            border-radius: 4px;
             border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
         }
 
         .search-box button {
-            padding: 9px 15px;
+            padding: 10px 15px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 15px;
         }
 
         .search-btn {
@@ -59,12 +66,20 @@
             color: white;
         }
 
+        .search-btn:hover {
+            background-color: #146c43;
+        }
+
         .clear-btn {
             background-color: #dc3545;
             color: white;
         }
 
-        /* Home Section */
+        .clear-btn:hover {
+            background-color: #bb2d3b;
+        }
+
+        /* Home */
         .hero {
             text-align: center;
             padding: 70px 20px;
@@ -73,6 +88,7 @@
 
         .hero h1 {
             font-size: 42px;
+            margin-bottom: 20px;
         }
 
         .hero p {
@@ -80,6 +96,7 @@
             line-height: 1.6;
         }
 
+        /* Container */
         .container {
             max-width: 1000px;
             margin: auto;
@@ -90,6 +107,7 @@
             text-align: center;
         }
 
+        /* Popular Destinations */
         .destination {
             padding: 20px;
             margin-top: 20px;
@@ -102,7 +120,6 @@
         #searchResults {
             max-width: 1000px;
             margin: 20px auto;
-            padding: 20px;
         }
 
         .result-card {
@@ -113,6 +130,7 @@
             background-color: white;
             border-radius: 10px;
             border: 1px solid #ddd;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
         }
 
         .result-card img {
@@ -126,6 +144,11 @@
             margin-top: 0;
         }
 
+        .result-card p {
+            line-height: 1.6;
+        }
+
+        /* Footer */
         footer {
             background-color: #222;
             color: white;
@@ -134,6 +157,7 @@
             margin-top: 30px;
         }
 
+        /* Mobile */
         @media (max-width: 700px) {
 
             nav {
@@ -163,19 +187,16 @@
 
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- ==================== NAVIGATION ==================== -->
+
     <nav>
 
-        <!-- Home -->
         <a href="#home">Home</a>
 
-        <!-- About Us -->
         <a href="#about">About Us</a>
 
-        <!-- Contact Us -->
         <a href="#contact">Contact Us</a>
 
-        <!-- Search Bar -->
         <div class="search-box">
 
             <input
@@ -184,16 +205,16 @@
                 placeholder="Search destinations..."
             >
 
-            <!-- Search Button -->
             <button
+                type="button"
                 class="search-btn"
                 onclick="searchDestination()"
             >
                 Search
             </button>
 
-            <!-- Clear Button -->
             <button
+                type="button"
                 class="clear-btn"
                 onclick="clearSearch()"
             >
@@ -205,7 +226,8 @@
     </nav>
 
 
-    <!-- Home Section -->
+    <!-- ==================== HOME ==================== -->
+
     <section class="hero" id="home">
 
         <h1>Travel Recommendation</h1>
@@ -216,18 +238,20 @@
         </p>
 
         <p>
-            Explore beautiful beaches, historical places,
-            cultural destinations, and exciting cities.
+            Explore beautiful beaches, temples, mountains,
+            historical places, cultural destinations, and exciting cities.
         </p>
 
     </section>
 
 
-    <!-- Search Results -->
+    <!-- ==================== SEARCH RESULTS ==================== -->
+
     <div id="searchResults"></div>
 
 
-    <!-- Popular Destinations -->
+    <!-- ==================== POPULAR DESTINATIONS ==================== -->
+
     <div class="container">
 
         <h2>Popular Travel Destinations</h2>
@@ -244,6 +268,7 @@
 
         </div>
 
+
         <div class="destination">
 
             <h3>Dubai</h3>
@@ -255,6 +280,7 @@
             </p>
 
         </div>
+
 
         <div class="destination">
 
@@ -270,7 +296,8 @@
     </div>
 
 
-    <!-- About Us -->
+    <!-- ==================== ABOUT US ==================== -->
+
     <section class="container" id="about">
 
         <h2>About Us</h2>
@@ -284,7 +311,8 @@
     </section>
 
 
-    <!-- Contact Us -->
+    <!-- ==================== CONTACT US ==================== -->
+
     <section class="container" id="contact">
 
         <h2>Contact Us</h2>
@@ -297,7 +325,8 @@
     </section>
 
 
-    <!-- Footer -->
+    <!-- ==================== FOOTER ==================== -->
+
     <footer>
 
         <p>
@@ -307,29 +336,37 @@
     </footer>
 
 
-    <!-- JavaScript -->
+    <!-- ==================== JAVASCRIPT ==================== -->
+
     <script>
 
         function searchDestination() {
 
-            let search =
-                document.getElementById("searchInput").value
-                .toLowerCase()
-                .trim();
+            const searchInput =
+                document.getElementById("searchInput");
 
-            let results =
+            const results =
                 document.getElementById("searchResults");
 
+            const search =
+                searchInput.value.toLowerCase().trim();
+
+
+            /* Empty Search */
             if (search === "") {
 
-                results.innerHTML =
-                    "<h2>Please enter a search term.</h2>";
+                results.innerHTML = `
+                    <div class="container">
+                        <h2>Please enter a search term.</h2>
+                    </div>
+                `;
 
                 return;
             }
 
 
-            /* Beach Results */
+            /* ================= BEACH ================= */
+
             if (search.includes("beach")) {
 
                 results.innerHTML = `
@@ -338,11 +375,12 @@
 
                         <h2>Beach Recommendations</h2>
 
+
                         <div class="result-card">
 
                             <img
                                 src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
-                                alt="Beautiful Beach"
+                                alt="Maldives Beach"
                             >
 
                             <div>
@@ -350,88 +388,4 @@
                                 <h3>Maldives Beach</h3>
 
                                 <p>
-                                    The Maldives is famous for its
-                                    beautiful beaches, clear blue water,
-                                    and peaceful tropical islands.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="result-card">
-
-                            <img
-                                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80"
-                                alt="Tropical Beach"
-                            >
-
-                            <div>
-
-                                <h3>Bora Bora Beach</h3>
-
-                                <p>
-                                    Bora Bora is a beautiful tropical
-                                    destination known for its beaches,
-                                    turquoise water, and scenic views.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                `;
-
-                return;
-            }
-
-
-            /* Temple Results - Task 7 */
-            if (search.includes("temple")) {
-
-                results.innerHTML = `
-
-                    <div class="container">
-
-                        <h2>Temple Recommendations</h2>
-
-                        <div class="result-card">
-
-                            <img
-                                src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
-                                alt="Golden Temple"
-                            >
-
-                            <div>
-
-                                <h3>Golden Temple</h3>
-
-                                <p>
-                                    The Golden Temple is a beautiful
-                                    and famous temple destination known
-                                    for its architecture and peaceful
-                                    atmosphere.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="result-card">
-
-                            <img
-                                src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80"
-                                alt="Beautiful Temple"
-                            >
-
-                            <div>
-
-                                <h3>Beautiful Temple</h3>
-
-                                <p>
-                                    Explore this beautiful temple
-                                    destination and enjoy its traditional
 ```
