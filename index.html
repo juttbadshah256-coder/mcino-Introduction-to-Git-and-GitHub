@@ -1,210 +1,273 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Simple Interest Calculator</title>
+    <title>Travel Recommendation</title>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f4f7f9;
-            color: #333;
+            font-family: Arial, sans-serif;
         }
 
+        /* Navigation Bar */
         nav {
             background-color: #222;
             padding: 15px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
+            font-size: 17px;
         }
 
         nav a:hover {
             text-decoration: underline;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .search-box {
+            margin-left: auto;
+            display: flex;
+            gap: 5px;
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        h2 {
-            margin-top: 30px;
-        }
-
-        p {
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
-        .calculator {
-            margin-top: 30px;
-            padding: 25px;
-            background-color: #f4f7f9;
-            border-radius: 8px;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
+        .search-box input {
+            padding: 9px;
+            width: 220px;
+            border-radius: 4px;
             border: 1px solid #ccc;
-            border-radius: 5px;
         }
 
-        button {
-            margin-top: 20px;
-            padding: 12px 25px;
+        .search-box button {
+            padding: 9px 15px;
             border: none;
-            border-radius: 5px;
-            background-color: #222;
-            color: white;
-            font-size: 16px;
+            border-radius: 4px;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #444;
+        .search-btn {
+            background-color: #198754;
+            color: white;
         }
 
-        #result {
+        .clear-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Home Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #f2f7f8;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .destination {
+            padding: 20px;
             margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
+            border: 1px solid #ddd;
+            border-radius: 8px;
         }
 
         footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
             background-color: #222;
             color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
-    </nav>
 
-    <!-- Home Page -->
-    <div class="container">
+        <!-- 1. Home -->
+        <a href="#home">Home</a>
 
-        <h1>Simple Interest Calculator</h1>
+        <!-- 2. About Us -->
+        <a href="#about">About Us</a>
 
-        <!-- Website Introduction -->
-        <h2>Welcome to Our Website</h2>
+        <!-- 3. Contact Us -->
+        <a href="#contact">Contact Us</a>
 
-        <p>
-            Welcome to the Simple Interest Calculator website.
-            This website provides a simple and easy way to calculate
-            simple interest. Users can enter the principal amount,
-            rate of interest, and time period to quickly calculate
-            the simple interest.
-        </p>
+        <!-- 4. Search Bar -->
+        <div class="search-box">
 
-        <p>
-            Our goal is to make simple interest calculations
-            easy, fast, and understandable for everyone.
-        </p>
-
-        <!-- Calculator -->
-        <div class="calculator">
-
-            <h2>Simple Interest Calculator</h2>
-
-            <label for="principal">Principal Amount</label>
             <input
-                type="number"
-                id="principal"
-                placeholder="Enter principal amount"
+                type="text"
+                id="searchInput"
+                placeholder="Search destinations..."
             >
 
-            <label for="rate">Rate of Interest (%)</label>
-            <input
-                type="number"
-                id="rate"
-                placeholder="Enter interest rate"
+            <!-- 5. Search Button -->
+            <button
+                class="search-btn"
+                onclick="searchDestination()"
             >
-
-            <label for="time">Time Period (Years)</label>
-            <input
-                type="number"
-                id="time"
-                placeholder="Enter time period"
-            >
-
-            <button onclick="calculateInterest()">
-                Calculate Interest
+                Search
             </button>
 
-            <p id="result"></p>
+            <!-- 6. Clear Button -->
+            <button
+                class="clear-btn"
+                onclick="clearSearch()"
+            >
+                Clear
+            </button>
 
+        </div>
+
+    </nav>
+
+
+    <!-- Home Section -->
+    <section class="hero" id="home">
+
+        <h1>Travel Recommendation</h1>
+
+        <p>
+            Discover amazing destinations and find the perfect
+            places for your next adventure.
+        </p>
+
+        <p>
+            Explore beautiful beaches, historical places,
+            cultural destinations, and exciting cities.
+        </p>
+
+    </section>
+
+
+    <!-- Destinations -->
+    <div class="container">
+
+        <h2>Popular Travel Destinations</h2>
+
+        <div class="destination">
+            <h3>Paris</h3>
+            <p>
+                Explore the beautiful city of Paris,
+                famous for its culture, architecture,
+                and historical landmarks.
+            </p>
+        </div>
+
+        <div class="destination">
+            <h3>Dubai</h3>
+            <p>
+                Discover modern attractions, beautiful
+                architecture, shopping, and entertainment
+                in Dubai.
+            </p>
+        </div>
+
+        <div class="destination">
+            <h3>Maldives</h3>
+            <p>
+                Enjoy beautiful beaches, clear water,
+                and peaceful island destinations.
+            </p>
         </div>
 
     </div>
 
+
+    <!-- About Us -->
+    <section class="container" id="about">
+
+        <h2>About Us</h2>
+
+        <p>
+            Travel Recommendation is a website designed to
+            help travelers discover interesting destinations
+            and plan their next trip.
+        </p>
+
+    </section>
+
+
+    <!-- Contact Us -->
+    <section class="container" id="contact">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            If you have any questions or suggestions,
+            please contact us through our website.
+        </p>
+
+    </section>
+
+
     <!-- Footer -->
     <footer>
-        <p>© 2026 Simple Interest Calculator. All Rights Reserved.</p>
+
+        <p>
+            © 2026 Travel Recommendation. All Rights Reserved.
+        </p>
+
     </footer>
 
+
+    <!-- JavaScript -->
     <script>
-        function calculateInterest() {
 
-            let principal =
-                Number(document.getElementById("principal").value);
+        function searchDestination() {
 
-            let rate =
-                Number(document.getElementById("rate").value);
+            let search =
+                document.getElementById("searchInput").value;
 
-            let time =
-                Number(document.getElementById("time").value);
+            if (search.trim() === "") {
 
-            if (principal <= 0 || rate <= 0 || time <= 0) {
-                document.getElementById("result").innerText =
-                    "Please enter valid values.";
-                return;
+                alert("Please enter a destination.");
+
+            } else {
+
+                alert("Searching for: " + search);
+
             }
-
-            let interest = (principal * rate * time) / 100;
-
-            document.getElementById("result").innerText =
-                "Simple Interest: " + interest;
         }
+
+
+        function clearSearch() {
+
+            document.getElementById("searchInput").value = "";
+
+        }
+
     </script>
 
 </body>
+
 </html>
 ```
